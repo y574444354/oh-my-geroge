@@ -1,6 +1,26 @@
 # oh-my-costrict (OMC)
 
-CSC 多智能体编排插件 — 为 CoStrict CLI (CSC) 提供多智能体编排、技能路由和生命周期 Hook 注入能力。
+[![npm version](https://img.shields.io/npm/v/@yan-geroge/omg?color=cb3837)](https://www.npmjs.com/package/@yan-geroge/omg)
+[![GitHub](https://img.shields.io/badge/GitHub-y574444354%2Foh--my--geroge-blue?logo=github)](https://github.com/y574444354/oh-my-geroge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+> CSC 多智能体编排插件 — 为 CoStrict CLI (CSC) 提供多智能体编排、技能路由和生命周期 Hook 注入能力。
+
+## 快速开始
+
+**推荐安装方式（GitHub）：**
+
+```bash
+/plugin marketplace add https://github.com/y574444354/oh-my-geroge
+/plugin install oh-my-costrict
+/reload-plugins
+```
+
+**NPM 包（供其他项目依赖）：**
+
+```bash
+npm install @yan-geroge/omg
+```
 
 ## 特性
 
@@ -8,26 +28,6 @@ CSC 多智能体编排插件 — 为 CoStrict CLI (CSC) 提供多智能体编排
 - **2 个编排技能** — autopilot 自动审查流水线 + team 多智能体并行团队
 - **生命周期 Hook** — SessionStart 注入工作流状态，UserPromptSubmit 关键词检测触发代理路由
 - **中文优先** — 所有文档、注释、代理提示均使用中文
-
-## 安装
-
-### NPM 安装（推荐）
-
-```bash
-npm install @yan-geroge/omg
-```
-
-### 本地安装
-
-```bash
-# 克隆仓库
-git clone https://github.com/y574444354/oh-my-geroge.git ~/.claude/plugins/cache/local/oh-my-costrict/
-
-# 在 settings.json 中启用
-{
-  "enabledPlugins": ["oh-my-costrict@local"]
-}
-```
 
 ## 可用代理
 
@@ -71,6 +71,9 @@ git clone https://github.com/y574444354/oh-my-geroge.git ~/.claude/plugins/cache
 
 ```
 oh-my-costrict/
+├── .claude-plugin/      # CSC 插件入口（必需）
+│   ├── plugin.json      # 插件清单
+│   └── marketplace.json # 插件市场注册信息
 ├── agents/              # 子代理定义 (markdown)
 │   ├── architect.md
 │   ├── executor.md
@@ -87,10 +90,18 @@ oh-my-costrict/
 │   └── lib/
 ├── scripts/             # 诊断与验证工具
 ├── tests/               # Hook 和关键词检测测试
-├── plugin.json          # CSC 插件配置
-├── package.json         # NPM 包配置
+├── plugin.json          # 根级插件配置（向后兼容）
+├── package.json         # NPM 包配置 (@yan-geroge/omg)
 └── CLAUDE.md            # 项目指令文件
 ```
+
+## 插件系统说明
+
+oh-my-costrict 通过 CSC 的插件系统分发：
+
+- **`.claude-plugin/plugin.json`** — CSC 识别的插件入口，定义技能、Hook 和元数据
+- **`.claude-plugin/marketplace.json`** — 插件市场注册信息，CSC 通过 GitHub 地址克隆并读取
+- **`plugin.json`** — 根级插件配置，与 `.claude-plugin/plugin.json` 内容一致，用于向后兼容
 
 ## 验证要求
 
