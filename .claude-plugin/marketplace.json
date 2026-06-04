@@ -1,0 +1,19 @@
+{
+  "name": "npm",
+  "owner": {
+    "name": "yan-geroge"
+  },
+  "plugins": [
+    {
+      "name": "oh-my-costrict",
+      "description": "CSC 多智能体编排插件 — 提供多智能体编排、技能路由、生命周期 Hook 注入能力",
+      "version": "0.1.2",
+      "author": {
+        "name": "yan-geroge"
+      },
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/y574444354/oh-my-geroge"
+    }
+  ]
+}

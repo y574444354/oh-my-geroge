@@ -1,11 +1,12 @@
 {
   "name": "@yan-geroge/omg",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CSC 多智能体编排插件 — 为 CSC 提供多智能体编排、技能路由、生命周期 Hook 注入能力",
   "main": "plugin.json",
   "files": [
     "plugin.json",
     "marketplace.json",
+    ".claude-plugin/",
     "agents/",
     "skills/",
     "hooks/",
