@@ -1,0 +1,12 @@
+{
+  "name": "omc-local",
+  "description": "oh-my-costrict 本地 marketplace 注册 — 用于开发及手动安装",
+  "plugins": [
+    {
+      "name": "oh-my-costrict",
+      "version": "0.1.0",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

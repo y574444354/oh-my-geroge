@@ -1,0 +1,34 @@
+{
+  "name": "@yan-geroge/omg",
+  "version": "0.1.0",
+  "description": "CSC 多智能体编排插件 — 为 CSC 提供多智能体编排、技能路由、生命周期 Hook 注入能力",
+  "main": "plugin.json",
+  "files": [
+    "plugin.json",
+    "marketplace.json",
+    "agents/",
+    "skills/",
+    "hooks/",
+    "scripts/",
+    "CLAUDE.md",
+    ".claude/",
+    "!.claude/settings.local.json"
+  ],
+  "scripts": {
+    "prepublishOnly": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('plugin.json','utf8'));const pk=JSON.parse(fs.readFileSync('package.json','utf8'));if(p.version!==pk.version){console.error('version mismatch: plugin.json='+p.version+' package.json='+pk.version);process.exit(1);}console.log('✓ plugin.json version matches package.json');\"",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "csc",
+    "costrict",
+    "plugin",
+    "multi-agent",
+    "orchestration",
+    "oh-my-costrict"
+  ],
+  "author": "yan-geroge",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

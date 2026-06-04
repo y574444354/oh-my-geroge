@@ -1,0 +1,20 @@
+# 内部开发文件 — 不随 NPM 包发布
+.trellis/
+tests/
+node_modules/
+
+# IDE / 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.git/
+.gitignore
+.DS_Store
+Thumbs.db
+.npmignore
+
+# 本地配置 — 不应随包发布
+.claude/settings.local.json

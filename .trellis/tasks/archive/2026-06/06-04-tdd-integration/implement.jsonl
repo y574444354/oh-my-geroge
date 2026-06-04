@@ -1,0 +1,5 @@
+{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": ".trellis/spec/guides/index.md", "reason": "参考现有思考指南的 index 格式和条目风格"}
+{"file": ".trellis/spec/backend/quality-guidelines.md", "reason": "参考 quality-guidelines 的 Testing Requirements 节结构和占位格式"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "参考现有思考指南的文件结构和写作风格"}
+{"file": ".trellis/spec/guides/tdd-workflow.md", "reason": "TDD 规范文件，红-绿-重构循环、覆盖率目标、各层测试策略"}

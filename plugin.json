@@ -1,0 +1,14 @@
+{
+  "name": "oh-my-costrict",
+  "version": "0.1.0",
+  "description": "CSC 多智能体编排插件 — 为 CSC 提供多智能体编排、技能路由、生命周期 Hook 注入能力",
+  "skills": "./skills/",
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.mjs\"", "timeout": 10000 }] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/keyword-detector.mjs\"", "timeout": 5000 }] }
+    ]
+  }
+}

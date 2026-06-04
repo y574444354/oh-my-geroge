@@ -1,0 +1,5 @@
+{"file": ".trellis/tasks/06-02-csc-plugin/prd.md", "reason": "PRD with confirmed requirements, acceptance criteria, MVP scope"}
+{"file": ".trellis/tasks/06-02-csc-plugin/info.md", "reason": "Technical design — directory structure, plugin.json, skills/agents/hooks format, IO contracts, testing strategy"}
+{"file": ".trellis/tasks/06-02-csc-plugin/research/csc-architecture.md", "reason": "CSC plugin loading mechanism, hook system (27 events, 4 types), plugin.json schema reference"}
+{"file": ".trellis/tasks/06-02-csc-plugin/research/comparison-analysis.md", "reason": "OMC/OMX/CSC three-way comparison, 8 shared patterns, MVP design decisions"}
+{"file": ".trellis/spec/backend/error-handling.md", "reason": "Error handling conventions for hook scripts"}
