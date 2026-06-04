@@ -14,9 +14,9 @@
 
 ## Acceptance Criteria
 
-* [ ] `git remote -v` 显示 origin 指向目标仓库
-* [ ] 初始提交成功
-* [ ] 推送成功
+* [x] `git remote -v` 显示 origin 指向目标仓库
+* [x] 初始提交成功 (a374de4, 138 files)
+* [x] 推送成功 (master → origin/master)
 
 ## Out of Scope
 
