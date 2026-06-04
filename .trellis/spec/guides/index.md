@@ -21,6 +21,7 @@ These guides help you **ask the right questions before coding**.
 
 | Guide | Purpose | When to Use |
 |-------|---------|-------------|
+| [Design Review Thinking Guide](./design-review-thinking-guide.md) | Deep design review before implementation (UI + architecture) | Before any implementation — auto-triggered by autopilot |
 | [Code Reuse Thinking Guide](./code-reuse-thinking-guide.md) | Identify patterns and reduce duplication | When you notice repeated patterns |
 | [Cross-Layer Thinking Guide](./cross-layer-thinking-guide.md) | Think through data flow across layers | Features spanning multiple layers |
 | [TDD Workflow Guide](./tdd-workflow.md) | Test-driven development with red-green-refactor loop | Before writing any implementation code |
