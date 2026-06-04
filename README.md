@@ -1,4 +1,4 @@
-# oh-my-costrict (OMC)
+# oh-my-costrict (OMG)
 
 [![npm version](https://img.shields.io/npm/v/@yan-geroge/omg?color=cb3837)](https://www.npmjs.com/package/@yan-geroge/omg)
 [![GitHub](https://img.shields.io/badge/GitHub-y574444354%2Foh--my--geroge-blue?logo=github)](https://github.com/y574444354/oh-my-geroge)
