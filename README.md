@@ -25,7 +25,7 @@ npm install @yan-geroge/omg
 ## 特性
 
 - **6 个专用子代理** — planner, architect, executor, reviewer, verifier, tdd-guide，覆盖完整开发流程
-- **2 个编排技能** — autopilot 自动审查流水线 + team 多智能体并行团队
+- **10 个编排技能** — 完整 8-Phase 开发流水线 (workflow) + 各阶段独立命令 (prd/design/plan/tdd/review/verify) + 质询审查 (grill-me/grill-with-docs) + UI 设计 (ui-ux-pro-max)
 - **生命周期 Hook** — SessionStart 注入工作流状态，UserPromptSubmit 关键词检测触发代理路由
 - **中文优先** — 所有文档、注释、代理提示均使用中文
 
@@ -42,10 +42,30 @@ npm install @yan-geroge/omg
 
 ## 可用技能
 
+### 流水线命令
+
 | 技能 | 用途 | 触发方式 |
 |------|------|----------|
-| `/oh-my-costrict:costrict-autopilot` | 自动审查流水线（PRD → 设计审查 → 工程审查 → DX 审查 → 汇总报告） | `/costrict-autopilot <任务>` |
-| `/oh-my-costrict:costrict-team` | 多智能体团队编排（规划 → 并行执行 → 审查 → 修复循环 → 验证） | `/costrict-team <任务>` |
+| `/oh-my-costrict:workflow` | 完整开发流水线（idea → PRD → UI设计 → 架构设计 → 拆解子任务 → TDD编码 → 代码审查+DX审查 → 修复循环 → 验证+汇总报告） | `/oh-my-costrict:workflow <任务>` 或说 "workflow" / "构建" |
+
+### 阶段独立命令
+
+| 技能 | 对应 Phase | 用途 | 触发方式 |
+|------|-----------|------|----------|
+| `/oh-my-costrict:prd` | Phase 1 | 需求探索 + PRD 生成 | `/oh-my-costrict:prd <任务>` |
+| `/oh-my-costrict:design` | Phase 3 | 架构设计 + 审查 | `/oh-my-costrict:design <需求>` |
+| `/oh-my-costrict:plan` | Phase 4 | 拆解编码子任务 | `/oh-my-costrict:plan <文档>` |
+| `/oh-my-costrict:tdd` | Phase 5 | TDD 并行编码 | `/oh-my-costrict:tdd <功能>` 或说 "tdd" |
+| `/oh-my-costrict:review` | Phase 6 | 代码审查 + DX 审查 | `/oh-my-costrict:review <路径>` 或说 "review" / "审查" |
+| `/oh-my-costrict:verify` | Phase 8 | 验证 + 汇总报告 | `/oh-my-costrict:verify <路径>` 或说 "verify" / "验证" |
+
+### 独立工具命令
+
+| 技能 | 用途 | 触发方式 |
+|------|------|----------|
+| `/oh-my-costrict:grill-me` | 质询式设计审查 | `/oh-my-costrict:grill-me` |
+| `/oh-my-costrict:grill-with-docs` | 领域模型驱动的设计审查 | `/oh-my-costrict:grill-with-docs <路径>` 或说 "grill" |
+| `/oh-my-costrict:ui-ux-pro-max` | UI/UX 设计智能 | `/oh-my-costrict:ui-ux-pro-max <需求>` |
 
 ## 开发流程
 
@@ -81,9 +101,17 @@ oh-my-costrict/
 │   ├── reviewer.md
 │   ├── tdd-guide.md
 │   └── verifier.md
-├── skills/              # 编排技能
-│   ├── costrict-autopilot/
-│   └── costrict-team/
+├── skills/              # 编排技能（10 个 SKILL.md）
+│   ├── workflow/        # 8-Phase 完整流水线
+│   ├── prd/             # Phase 1: 需求 + PRD
+│   ├── design/          # Phase 3: 架构设计
+│   ├── plan/            # Phase 4: 拆解子任务
+│   ├── tdd/             # Phase 5: TDD 编码
+│   ├── review/          # Phase 6: 代码 + DX 审查
+│   ├── verify/          # Phase 8: 验证 + 汇总
+│   ├── grill-me/        # 质询式审查
+│   ├── grill-with-docs/ # 领域模型审查
+│   └── ui-ux-pro-max/   # UI/UX 设计智能
 ├── hooks/               # 生命周期 Hook
 │   ├── session-start.mjs
 │   ├── keyword-detector.mjs

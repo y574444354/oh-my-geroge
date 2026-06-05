@@ -25,7 +25,7 @@ argument-hint: "<PRD 或设计文档路径>"
 
 | 触发条件 | 触发方式 |
 |----------|----------|
-| `/costrict-autopilot` 进入设计审查阶段 | 自动作为 Phase 2b 执行 |
+| `/oh-my-costrict:workflow` 或 `/oh-my-costrict:design` 进入设计/架构阶段 | 自动作为设计审查步骤执行 |
 | PRD 确认后进入架构设计 | 自动触发 |
 | 用户说 "review the design" / "审查设计" / "grill my plan" | 手动触发 |
 | 任务涉及跨模块/跨层变更 | 自动判断触发 |
@@ -186,13 +186,17 @@ CONTEXT.md 必须是**纯术语表**，不包含：
 ## 与其他技能的协作
 
 ```
-grill-with-docs 在设计审查阶段运行：
-  Phase 1: PRD 生成 (planner + grill-me 内置在 brainstorm)
-  Phase 2a: UI 设计审查 (ui-ux-pro-max) ← 条件触发
-  Phase 2b: 架构设计审查 (grill-with-docs) ← 始终触发 ★
-  Phase 3: 工程审查 (reviewer)
-  Phase 4: DX 审查 (reviewer)
-  Phase 5: 汇总报告
+grill-with-docs 在流水线中内置运行：
+  Phase 1: 需求探索 + PRD 生成 (planner) ← grill-with-docs 术语挑战内置 ★
+  Phase 2: UI 设计 + 审查 (ui-ux-pro-max) ← 条件触发
+  Phase 3: 架构设计 + 审查 (architect) ← grill-with-docs 领域验证内置 ★
+  Phase 4: 拆解编码子任务 (planner)
+  Phase 5: TDD 编码 (executor × N + tdd-guide)
+  Phase 6: 代码审查 + DX 审查 (reviewer)
+  Phase 7: 修复循环 (≤3 轮)
+  Phase 8: 验证 + 汇总报告 (verifier)
+
+也可作为独立命令调用：/oh-my-costrict:grill-with-docs
 ```
 
 ## 反模式

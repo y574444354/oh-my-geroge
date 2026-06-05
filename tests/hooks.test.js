@@ -126,13 +126,13 @@ test('集成测试 — session-start 注入了 claude.md 内容', async () => {
 
 // ============ keyword-detector.mjs 集成测试 ============
 
-test('集成测试 — keyword-detector 检测到 "autopilot" 关键词', async () => {
-  // 发送包含 "autopilot" 关键词的 prompt
+test('集成测试 — keyword-detector 检测到 "workflow" 关键词', async () => {
+  // 发送包含 "workflow" 关键词的 prompt
   const stdinData = {
     hook_event_name: 'UserPromptSubmit',
     session_id: 'test-session-003',
     cwd: pluginRoot,
-    prompt: '使用 autopilot 自动审查代码',
+    prompt: '使用 workflow 流水线开发功能',
   };
 
   // 执行 hook 脚本
@@ -144,27 +144,26 @@ test('集成测试 — keyword-detector 检测到 "autopilot" 关键词', async 
 
   // 验证路由消息包含技能提示
   const msg = result.systemMessage;
-  assert.ok(msg.includes('/oh-my-costrict:costrict-autopilot'), '路由消息应提及 /oh-my-costrict:costrict-autopilot 技能');
-  assert.ok(msg.includes('planner'), '路由消息应提及 planner 代理');
-  assert.ok(msg.includes('autopilot'), '路由消息应包含关键词');
+  assert.ok(msg.includes('/oh-my-costrict:workflow'), '路由消息应提及 /oh-my-costrict:workflow 技能');
+  assert.ok(msg.includes('workflow'), '路由消息应包含关键词');
 });
 
-test('集成测试 — keyword-detector 检测到 "team" 关键词', async () => {
-  // 发送包含 "team" 关键词的 prompt
+test('集成测试 — keyword-detector 检测到 "审查" 关键词', async () => {
+  // 发送包含中文"审查"关键词的 prompt
   const stdinData = {
     hook_event_name: 'UserPromptSubmit',
     session_id: 'test-session-004',
     cwd: pluginRoot,
-    prompt: '/team 重构整个模块',
+    prompt: '帮我审查这段代码',
   };
 
   // 执行 hook 脚本
   const result = await runHookScript('keyword-detector.mjs', stdinData);
 
-  // 验证路由消息包含 team 相关提示
+  // 验证路由消息包含 review 相关提示
   const msg = result.systemMessage;
-  assert.ok(msg.includes('/oh-my-costrict:costrict-team'), '路由消息应提及 /oh-my-costrict:costrict-team 技能');
-  assert.ok(msg.includes('executor'), '路由消息应提及 executor 代理');
+  assert.ok(msg.includes('/oh-my-costrict:review'), '路由消息应提及 /oh-my-costrict:review 技能');
+  assert.ok(msg.includes('reviewer'), '路由消息应提及 reviewer 代理');
 });
 
 test('集成测试 — keyword-detector 无匹配关键词时返回空 systemMessage', async () => {

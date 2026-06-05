@@ -12,23 +12,23 @@ const { detectKeywords } = require('../hooks/lib/keyword-detector.js');
 
 // ============ 精确匹配测试 ============
 
-test('detectKeywords — 精确匹配 "autopilot"', () => {
-  // 输入包含完整关键词 "autopilot"，应命中优先级 10
-  const result = detectKeywords('使用 autopilot 来审查');
+test('detectKeywords — 精确匹配 "workflow"', () => {
+  // 输入包含完整关键词 "workflow"，应命中优先级 10
+  const result = detectKeywords('运行 workflow 流水线');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'autopilot');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
+  assert.equal(result.keyword, 'workflow');
+  assert.equal(result.skill, 'oh-my-costrict:workflow');
   assert.equal(result.priority, 10);
 });
 
-test('detectKeywords — 精确匹配 "team"', () => {
-  // 输入包含完整关键词 "team"，应命中优先级 10
-  const result = detectKeywords('/team 重构代码');
+test('detectKeywords — 精确匹配 "构建"', () => {
+  // 输入包含中文关键词 "构建"，应命中优先级 10
+  const result = detectKeywords('构建一个新项目');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'team');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-team');
+  assert.equal(result.keyword, '构建');
+  assert.equal(result.skill, 'oh-my-costrict:workflow');
   assert.equal(result.priority, 10);
 });
 
@@ -38,88 +38,145 @@ test('detectKeywords — 精确匹配 "tdd"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'tdd');
-  assert.equal(result.skill, 'oh-my-costrict:tdd-guide');
+  assert.equal(result.skill, 'oh-my-costrict:tdd');
+  assert.equal(result.priority, 10);
+});
+
+test('detectKeywords — 精确匹配 "review"', () => {
+  // 输入包含完整关键词 "review"，应命中优先级 10
+  const result = detectKeywords('进行代码 review');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, 'review');
+  assert.equal(result.skill, 'oh-my-costrict:review');
+  assert.equal(result.priority, 10);
+});
+
+test('detectKeywords — 精确匹配 "审查"', () => {
+  // 输入包含中文关键词 "审查"，应命中优先级 10
+  const result = detectKeywords('需要审查这段代码');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, '审查');
+  assert.equal(result.skill, 'oh-my-costrict:review');
+  assert.equal(result.priority, 10);
+});
+
+test('detectKeywords — 精确匹配 "verify"', () => {
+  // 输入包含完整关键词 "verify"，应命中优先级 10
+  const result = detectKeywords('验证并 verify 结果');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, 'verify');
+  assert.equal(result.skill, 'oh-my-costrict:verify');
+  assert.equal(result.priority, 10);
+});
+
+test('detectKeywords — 精确匹配 "验证"', () => {
+  // 输入包含中文关键词 "验证"，应命中优先级 10
+  const result = detectKeywords('运行验证流程');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, '验证');
+  assert.equal(result.skill, 'oh-my-costrict:verify');
   assert.equal(result.priority, 10);
 });
 
 // ============ 部分匹配测试 ============
 
-test('detectKeywords — 部分匹配 "auto"', () => {
-  // "auto" 为非精确匹配，命中优先级 5
-  const result = detectKeywords('auto approve this');
+test('detectKeywords — 部分匹配 "grill"', () => {
+  // "grill" 为非精确匹配（exact: false），子串即命中
+  const result = detectKeywords('let me grill this design');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'auto');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
-  assert.equal(result.priority, 5);
+  assert.equal(result.keyword, 'grill');
+  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
+  assert.equal(result.priority, 10);
 });
 
-test('detectKeywords — "auto" 部分匹配子串', () => {
-  // "automation" 包含 "auto" 子串，应命中
-  const result = detectKeywords('run automation tests');
+test('detectKeywords — "grill" 子串匹配 "grilling"', () => {
+  // "grilling" 包含 "grill" 子串，应命中
+  const result = detectKeywords('keep grilling my plan');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'auto');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
+  assert.equal(result.keyword, 'grill');
+  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
 });
 
 // ============ 不区分大小写测试 ============
 
-test('detectKeywords — 大写关键词', () => {
+test('detectKeywords — 大写 "WORKFLOW"', () => {
   // 匹配不区分大小写
-  const result = detectKeywords('AUTOPILOT 模式');
+  const result = detectKeywords('启动 WORKFLOW 模式');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'autopilot');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
+  assert.equal(result.keyword, 'workflow');
+  assert.equal(result.skill, 'oh-my-costrict:workflow');
 });
 
-test('detectKeywords — 混合大小写关键词', () => {
+test('detectKeywords — 大写 "TDD"', () => {
   // 匹配不区分大小写
-  const result = detectKeywords('使用 AutoPilot 功能');
-
-  assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'autopilot');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
-});
-
-test('detectKeywords — 大写 "TEAM"', () => {
-  // 匹配不区分大小写
-  const result = detectKeywords('需要 TEAM 协作');
-
-  assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'team');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-team');
-});
-
-test('detectKeywords — 小写 "TDD"', () => {
-  // 匹配不区分大小写（TDD 作为精确匹配词边界）
-  const result = detectKeywords('实施 tdd 工作流');
+  const result = detectKeywords('使用 TDD 工作流');
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'tdd');
-  assert.equal(result.skill, 'oh-my-costrict:tdd-guide');
+  assert.equal(result.skill, 'oh-my-costrict:tdd');
+});
+
+test('detectKeywords — 大写 "REVIEW"', () => {
+  // 匹配不区分大小写
+  const result = detectKeywords('进行代码 REVIEW');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, 'review');
+  assert.equal(result.skill, 'oh-my-costrict:review');
+});
+
+test('detectKeywords — 大写 "VERIFY"', () => {
+  // 匹配不区分大小写
+  const result = detectKeywords('VERIFY 所有测试');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, 'verify');
+  assert.equal(result.skill, 'oh-my-costrict:verify');
+});
+
+test('detectKeywords — 大写 "GRILL"', () => {
+  // 匹配不区分大小写（grill 为部分匹配）
+  const result = detectKeywords('GRILL my design');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, 'grill');
+  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
 });
 
 // ============ 优先级测试 ============
 
-test('detectKeywords — "autopilot" 优先级高于 "auto"', () => {
-  // "autopilot" (priority 10) 应优先于 "auto" (priority 5)
-  const result = detectKeywords('使用 autopilot');
+test('detectKeywords — 同优先级取先匹配的（workflow 在 构建 之前）', () => {
+  // "workflow" 和 "构建" 同为 priority 10，"workflow" 在规则表排前面
+  const result = detectKeywords('workflow 构建');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'autopilot', '"autopilot" 优先级更高应胜出');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
-  assert.equal(result.priority, 10);
+  assert.equal(result.keyword, 'workflow', '同优先级时应取先匹配的 "workflow"');
+  assert.equal(result.skill, 'oh-my-costrict:workflow');
 });
 
-test('detectKeywords — 同优先级取先匹配的', () => {
-  // "autopilot" 和 "team" 都为 priority 10，"autopilot" 排前面
-  const result = detectKeywords('autopilot 和 team 同时使用');
+test('detectKeywords — 同优先级取先匹配的（review 在 审查 之前）', () => {
+  // "review" 和 "审查" 同为 priority 10，"review" 在规则表排前面
+  const result = detectKeywords('review 审查');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'autopilot', '同优先级时应取先匹配的 "autopilot"');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
+  assert.equal(result.keyword, 'review', '同优先级时应取先匹配的 "review"');
+  assert.equal(result.skill, 'oh-my-costrict:review');
+});
+
+test('detectKeywords — grill 匹配优先于同优先级规则', () => {
+  // "grill" 和 "review" 同为 priority 10，"grill" 在规则表排前面
+  const result = detectKeywords('grill the review');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, 'grill', '"grill" 应优先于 "review"');
+  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
 });
 
 // ============ 无匹配测试 ============
@@ -170,22 +227,49 @@ test('detectKeywords — "tdd" 不会匹配 "tddrama"', () => {
   assert.equal(result, null, '"tddrama" 不应匹配 "tdd"');
 });
 
-test('detectKeywords — "autopiloting" 仅触发部分匹配 "auto"', () => {
-  // "autopiloting" 不在词边界规则内，不匹配 "autopilot" 精确匹配
-  // 但它包含 "auto" 子串，触发 "auto" 的部分匹配（优先级 5）
-  const result = detectKeywords('autopiloting the plane');
+test('detectKeywords — "review" 不会匹配 "reviewing"', () => {
+  // review 为精确词边界匹配，不应匹配 "reviewing"
+  const result = detectKeywords('reviewing the code');
 
-  assert.ok(result !== null, '"autopiloting" 应通过部分匹配 "auto" 命中');
-  assert.equal(result.keyword, 'auto', '应匹配 "auto" 而非 "autopilot"');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-autopilot');
-  assert.equal(result.priority, 5, '优先级应为 5（部分匹配）');
+  assert.equal(result, null, '"reviewing" 不应匹配 "review"');
+});
+
+test('detectKeywords — "workflow" 不会匹配 "workflows"', () => {
+  // workflow 为精确词边界匹配，不应匹配 "workflows"
+  const result = detectKeywords('multiple workflows');
+
+  assert.equal(result, null, '"workflows" 不应匹配 "workflow"');
 });
 
 test('detectKeywords — 中文语境下的关键词检测', () => {
   // 中文文本中嵌入英文关键词
-  const result = detectKeywords('我想使用 team 模式来处理这个任务');
+  const result = detectKeywords('我想使用 workflow 模式来处理这个任务');
 
   assert.ok(result !== null, '应返回匹配结果');
-  assert.equal(result.keyword, 'team');
-  assert.equal(result.skill, 'oh-my-costrict:costrict-team');
+  assert.equal(result.keyword, 'workflow');
+  assert.equal(result.skill, 'oh-my-costrict:workflow');
+});
+
+test('detectKeywords — 中文关键词"审查"在复杂句子中', () => {
+  // 中文文本中关键词检测
+  const result = detectKeywords('请帮我审查一下这段代码的质量和安全性');
+
+  assert.ok(result !== null, '应返回匹配结果');
+  assert.equal(result.keyword, '审查');
+  assert.equal(result.skill, 'oh-my-costrict:review');
+});
+
+test('detectKeywords — "auto" 不再匹配任何规则', () => {
+  // 旧的 "auto" 规则已移除，不应再匹配
+  const result = detectKeywords('auto approve this');
+
+  assert.equal(result, null, '"auto" 不再有匹配规则');
+});
+
+test('detectKeywords — "team" 不再匹配任何规则', () => {
+  // 旧的 "team" 规则已移除，不应再匹配（除非作为review/grill的子串）
+  // "team" 本身不含其他关键词
+  const result = detectKeywords('/team 重构代码');
+
+  assert.equal(result, null, '"team" 不再有匹配规则');
 });

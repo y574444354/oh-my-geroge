@@ -16,7 +16,7 @@ argument-hint: "<设计需求描述>"
 
 | 触发条件 | 触发方式 |
 |----------|----------|
-| `/costrict-autopilot` 任务涉及 frontend/UI/界面/页面/组件 | 自动作为 Phase 2a 执行 |
+| `/oh-my-costrict:workflow` 任务涉及 frontend/UI/界面/页面/组件 | 自动作为 UI 设计阶段执行 |
 | 任务描述含关键词：页面、界面、UI、前端、组件、样式、布局、仪表盘、落地页 | 自动检测触发 |
 | 用户明确请求 UI 设计审查 | 手动触发 |
 

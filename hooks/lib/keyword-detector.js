@@ -5,28 +5,36 @@
  * 此模块为纯函数，不依赖任何外部状态或 I/O，便于单元测试。
  *
  * 关键词映射表（按检测顺序排列）：
- * ┌───────────────┬───────────────┬──────────┐
- * │ 关键词          │ 技能           │ 优先级    │
- * ├───────────────┼───────────────┼──────────┤
- * │ autopilot      │ costrict-autopilot │ 10       │
- * │ auto（非精确匹配）│ costrict-autopilot │ 5        │
- * │ team           │ costrict-team      │ 10       │
- * │ tdd            │ tdd-guide     │ 10       │
- * └───────────────┴───────────────┴──────────┘
+ * ┌───────────────┬──────────────────────────┬──────────┐
+ * │ 关键词          │ 技能                      │ 优先级    │
+ * ├───────────────┼──────────────────────────┼──────────┤
+ * │ workflow      │ oh-my-costrict:workflow  │ 10       │
+ * │ 构建           │ oh-my-costrict:workflow  │ 10       │
+ * │ grill（子串匹配）│ oh-my-costrict:grill-with-docs │ 10 │
+ * │ tdd           │ oh-my-costrict:tdd        │ 10       │
+ * │ review        │ oh-my-costrict:review     │ 10       │
+ * │ 审查           │ oh-my-costrict:review     │ 10       │
+ * │ verify        │ oh-my-costrict:verify     │ 10       │
+ * │ 验证           │ oh-my-costrict:verify     │ 10       │
+ * └───────────────┴──────────────────────────┴──────────┘
  *
  * 匹配规则：
  * - 匹配不区分大小写
  * - 优先级相同时取先匹配到的关键词
- * - "auto" 是部分匹配（包含即命中），其余为词边界匹配
+ * - "grill" 是部分匹配（包含即命中），其余为词边界匹配
  */
 
 // 关键词规则配置表
 // 每个规则包含：keyword（检测词）、skill（路由目标技能）、priority（优先级，数字越大越优先）、exact（是否精确词边界匹配）
 const KEYWORD_RULES = [
-  { keyword: 'autopilot', skill: 'oh-my-costrict:costrict-autopilot', priority: 10, exact: true },
-  { keyword: 'auto', skill: 'oh-my-costrict:costrict-autopilot', priority: 5, exact: false },
-  { keyword: 'team', skill: 'oh-my-costrict:costrict-team', priority: 10, exact: true },
-  { keyword: 'tdd', skill: 'oh-my-costrict:tdd-guide', priority: 10, exact: true },
+  { keyword: 'workflow', skill: 'oh-my-costrict:workflow', priority: 10, exact: true },
+  { keyword: '构建', skill: 'oh-my-costrict:workflow', priority: 10, exact: true },
+  { keyword: 'grill', skill: 'oh-my-costrict:grill-with-docs', priority: 10, exact: false },
+  { keyword: 'tdd', skill: 'oh-my-costrict:tdd', priority: 10, exact: true },
+  { keyword: 'review', skill: 'oh-my-costrict:review', priority: 10, exact: true },
+  { keyword: '审查', skill: 'oh-my-costrict:review', priority: 10, exact: true },
+  { keyword: 'verify', skill: 'oh-my-costrict:verify', priority: 10, exact: true },
+  { keyword: '验证', skill: 'oh-my-costrict:verify', priority: 10, exact: true },
 ];
 
 /**
@@ -54,8 +62,9 @@ function detectKeywords(prompt) {
     let matched = false;
 
     if (rule.exact) {
-      // 精确匹配：使用词边界正则（\b 为词边界）
-      const exactPattern = new RegExp(`\\b${escapeRegExp(keywordLower)}\\b`);
+      // 精确匹配：使用 (?<!\w) 和 (?!\w) 作为词边界（替代 \b）
+      // 此方式同时正确处理 ASCII（如 "tdd" 不匹配 "tddrama"）和 CJK 字符（如 "审查" 匹配中文文本）
+      const exactPattern = new RegExp(`(?<!\\w)${escapeRegExp(keywordLower)}(?!\\w)`);
       matched = exactPattern.test(lowerPrompt);
     } else {
       // 部分匹配：直接检查是否包含
