@@ -1,5 +1,5 @@
 ---
-name: plan
+name: omg:plan
 description: 子任务规划 — 从 PRD + 设计 + 架构产出独立可编码的子任务，按垂直切片拆分
 argument-hint: "<PRD 或设计文档路径>"
 ---

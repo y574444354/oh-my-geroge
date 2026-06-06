@@ -1,5 +1,5 @@
 ---
-name: prd
+name: omg:prd
 description: PRD 生成 — 分析需求并产出结构化 PRD 文档，内置 grill-with-docs 术语挑战，含 Gate 确认
 argument-hint: "<任务描述>"
 ---

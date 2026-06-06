@@ -58,25 +58,25 @@ async function readStdin() {
 function buildRoutingMessage(match) {
   // 根据不同的技能返回对应的路由提示
   switch (match.skill) {
-    case 'oh-my-costrict:workflow':
+    case 'oh-my-costrict:omg:workflow':
       // 完整开发流水线路由提示
-      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:workflow 技能。完整流水线：idea → PRD → 设计 → 设计审查 → TDD 编码 → 代码审查+DX审查 → 验证修复 → 完成。`;
+      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:omg:workflow 技能。完整流水线：idea → PRD → 设计 → 设计审查 → TDD 编码 → 代码审查+DX审查 → 验证修复 → 完成。`;
 
-    case 'oh-my-costrict:tdd':
+    case 'oh-my-costrict:omg:tdd':
       // TDD 工作流路由提示
-      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:tdd 技能。委托 tdd-guide 代理，严格遵循红-绿-重构循环：先写测试 → 确认失败 → 编写最简实现 → 确认通过 → 重构改进。目标覆盖率 >= 80%。`;
+      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:omg:tdd 技能。委托 tdd-guide 代理，严格遵循红-绿-重构循环：先写测试 → 确认失败 → 编写最简实现 → 确认通过 → 重构改进。目标覆盖率 >= 80%。`;
 
-    case 'oh-my-costrict:review':
+    case 'oh-my-costrict:omg:review':
       // 代码审查路由提示
-      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:review 技能。委托 reviewer 代理进行代码审查（代码质量 + 设计 + 安全），输出按 CRITICAL/HIGH/MEDIUM/LOW 分级的问题列表。`;
+      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:omg:review 技能。委托 reviewer 代理进行代码审查（代码质量 + 设计 + 安全），输出按 CRITICAL/HIGH/MEDIUM/LOW 分级的问题列表。`;
 
-    case 'oh-my-costrict:verify':
+    case 'oh-my-costrict:omg:verify':
       // 验证修复路由提示
-      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:verify 技能。委托 verifier 代理运行测试和覆盖率检查，失败则委托 executor 修复并重跑，最多 3 轮循环。`;
+      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:omg:verify 技能。委托 verifier 代理运行测试和覆盖率检查，失败则委托 executor 修复并重跑，最多 3 轮循环。`;
 
-    case 'oh-my-costrict:grill-with-docs':
+    case 'oh-my-costrict:omg:grill-with-docs':
       // 领域模型驱动设计审查路由提示
-      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:grill-with-docs 技能。用项目 spec 和 CONTEXT.md 挑战设计方案，精确化术语，内联更新文档和 ADR。`;
+      return `[关键词路由] 检测到关键词 "${match.keyword}"，建议使用 /oh-my-costrict:omg:grill-with-docs 技能。用项目 spec 和 CONTEXT.md 挑战设计方案，精确化术语，内联更新文档和 ADR。`;
 
     default:
       // 未识别的技能路由

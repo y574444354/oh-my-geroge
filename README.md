@@ -46,26 +46,26 @@ npm install @yan-geroge/omg
 
 | 技能 | 用途 | 触发方式 |
 |------|------|----------|
-| `/oh-my-costrict:workflow` | 完整开发流水线（idea → PRD → UI设计 → 架构设计 → 拆解子任务 → TDD编码 → 代码审查+DX审查 → 修复循环 → 验证+汇总报告） | `/oh-my-costrict:workflow <任务>` 或说 "workflow" / "构建" |
+| `/oh-my-costrict:omg:workflow` | 完整开发流水线（idea → PRD → UI设计 → 架构设计 → 拆解子任务 → TDD编码 → 代码审查+DX审查 → 修复循环 → 验证+汇总报告） | `/oh-my-costrict:omg:workflow <任务>` 或说 "workflow" / "构建" |
 
 ### 阶段独立命令
 
 | 技能 | 对应 Phase | 用途 | 触发方式 |
 |------|-----------|------|----------|
-| `/oh-my-costrict:prd` | Phase 1 | 需求探索 + PRD 生成 | `/oh-my-costrict:prd <任务>` |
-| `/oh-my-costrict:design` | Phase 3 | 架构设计 + 审查 | `/oh-my-costrict:design <需求>` |
-| `/oh-my-costrict:plan` | Phase 4 | 拆解编码子任务 | `/oh-my-costrict:plan <文档>` |
-| `/oh-my-costrict:tdd` | Phase 5 | TDD 并行编码 | `/oh-my-costrict:tdd <功能>` 或说 "tdd" |
-| `/oh-my-costrict:review` | Phase 6 | 代码审查 + DX 审查 | `/oh-my-costrict:review <路径>` 或说 "review" / "审查" |
-| `/oh-my-costrict:verify` | Phase 8 | 验证 + 汇总报告 | `/oh-my-costrict:verify <路径>` 或说 "verify" / "验证" |
+| `/oh-my-costrict:omg:prd` | Phase 1 | 需求探索 + PRD 生成 | `/oh-my-costrict:omg:prd <任务>` |
+| `/oh-my-costrict:omg:design` | Phase 3 | 架构设计 + 审查 | `/oh-my-costrict:omg:design <需求>` |
+| `/oh-my-costrict:omg:plan` | Phase 4 | 拆解编码子任务 | `/oh-my-costrict:omg:plan <文档>` |
+| `/oh-my-costrict:omg:tdd` | Phase 5 | TDD 并行编码 | `/oh-my-costrict:omg:tdd <功能>` 或说 "tdd" |
+| `/oh-my-costrict:omg:review` | Phase 6 | 代码审查 + DX 审查 | `/oh-my-costrict:omg:review <路径>` 或说 "review" / "审查" |
+| `/oh-my-costrict:omg:verify` | Phase 8 | 验证 + 汇总报告 | `/oh-my-costrict:omg:verify <路径>` 或说 "verify" / "验证" |
 
 ### 独立工具命令
 
 | 技能 | 用途 | 触发方式 |
 |------|------|----------|
-| `/oh-my-costrict:grill-me` | 质询式设计审查 | `/oh-my-costrict:grill-me` |
-| `/oh-my-costrict:grill-with-docs` | 领域模型驱动的设计审查 | `/oh-my-costrict:grill-with-docs <路径>` 或说 "grill" |
-| `/oh-my-costrict:ui-ux-pro-max` | UI/UX 设计智能 | `/oh-my-costrict:ui-ux-pro-max <需求>` |
+| `/oh-my-costrict:omg:grill-me` | 质询式设计审查 | `/oh-my-costrict:omg:grill-me` |
+| `/oh-my-costrict:omg:grill-with-docs` | 领域模型驱动的设计审查 | `/oh-my-costrict:omg:grill-with-docs <路径>` 或说 "grill" |
+| `/oh-my-costrict:omg:ui-ux-pro-max` | UI/UX 设计智能 | `/oh-my-costrict:omg:ui-ux-pro-max <需求>` |
 
 ## 开发流程
 

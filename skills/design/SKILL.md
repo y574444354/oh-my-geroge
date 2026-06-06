@@ -1,5 +1,5 @@
 ---
-name: design
+name: omg:design
 description: 架构设计+审查 — 产出技术方案并自动审查，内置 grill-with-docs 领域验证，含 Gate 确认
 argument-hint: "<PRD 或需求描述>"
 ---

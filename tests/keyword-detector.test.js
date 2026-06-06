@@ -18,7 +18,7 @@ test('detectKeywords — 精确匹配 "workflow"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'workflow');
-  assert.equal(result.skill, 'oh-my-costrict:workflow');
+  assert.equal(result.skill, 'oh-my-costrict:omg:workflow');
   assert.equal(result.priority, 10);
 });
 
@@ -28,7 +28,7 @@ test('detectKeywords — 精确匹配 "构建"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, '构建');
-  assert.equal(result.skill, 'oh-my-costrict:workflow');
+  assert.equal(result.skill, 'oh-my-costrict:omg:workflow');
   assert.equal(result.priority, 10);
 });
 
@@ -38,7 +38,7 @@ test('detectKeywords — 精确匹配 "tdd"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'tdd');
-  assert.equal(result.skill, 'oh-my-costrict:tdd');
+  assert.equal(result.skill, 'oh-my-costrict:omg:tdd');
   assert.equal(result.priority, 10);
 });
 
@@ -48,7 +48,7 @@ test('detectKeywords — 精确匹配 "review"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'review');
-  assert.equal(result.skill, 'oh-my-costrict:review');
+  assert.equal(result.skill, 'oh-my-costrict:omg:review');
   assert.equal(result.priority, 10);
 });
 
@@ -58,7 +58,7 @@ test('detectKeywords — 精确匹配 "审查"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, '审查');
-  assert.equal(result.skill, 'oh-my-costrict:review');
+  assert.equal(result.skill, 'oh-my-costrict:omg:review');
   assert.equal(result.priority, 10);
 });
 
@@ -68,7 +68,7 @@ test('detectKeywords — 精确匹配 "verify"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'verify');
-  assert.equal(result.skill, 'oh-my-costrict:verify');
+  assert.equal(result.skill, 'oh-my-costrict:omg:verify');
   assert.equal(result.priority, 10);
 });
 
@@ -78,7 +78,7 @@ test('detectKeywords — 精确匹配 "验证"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, '验证');
-  assert.equal(result.skill, 'oh-my-costrict:verify');
+  assert.equal(result.skill, 'oh-my-costrict:omg:verify');
   assert.equal(result.priority, 10);
 });
 
@@ -90,7 +90,7 @@ test('detectKeywords — 部分匹配 "grill"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'grill');
-  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
+  assert.equal(result.skill, 'oh-my-costrict:omg:grill-with-docs');
   assert.equal(result.priority, 10);
 });
 
@@ -100,7 +100,7 @@ test('detectKeywords — "grill" 子串匹配 "grilling"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'grill');
-  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
+  assert.equal(result.skill, 'oh-my-costrict:omg:grill-with-docs');
 });
 
 // ============ 不区分大小写测试 ============
@@ -111,7 +111,7 @@ test('detectKeywords — 大写 "WORKFLOW"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'workflow');
-  assert.equal(result.skill, 'oh-my-costrict:workflow');
+  assert.equal(result.skill, 'oh-my-costrict:omg:workflow');
 });
 
 test('detectKeywords — 大写 "TDD"', () => {
@@ -120,7 +120,7 @@ test('detectKeywords — 大写 "TDD"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'tdd');
-  assert.equal(result.skill, 'oh-my-costrict:tdd');
+  assert.equal(result.skill, 'oh-my-costrict:omg:tdd');
 });
 
 test('detectKeywords — 大写 "REVIEW"', () => {
@@ -129,7 +129,7 @@ test('detectKeywords — 大写 "REVIEW"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'review');
-  assert.equal(result.skill, 'oh-my-costrict:review');
+  assert.equal(result.skill, 'oh-my-costrict:omg:review');
 });
 
 test('detectKeywords — 大写 "VERIFY"', () => {
@@ -138,7 +138,7 @@ test('detectKeywords — 大写 "VERIFY"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'verify');
-  assert.equal(result.skill, 'oh-my-costrict:verify');
+  assert.equal(result.skill, 'oh-my-costrict:omg:verify');
 });
 
 test('detectKeywords — 大写 "GRILL"', () => {
@@ -147,7 +147,7 @@ test('detectKeywords — 大写 "GRILL"', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'grill');
-  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
+  assert.equal(result.skill, 'oh-my-costrict:omg:grill-with-docs');
 });
 
 // ============ 优先级测试 ============
@@ -158,7 +158,7 @@ test('detectKeywords — 同优先级取先匹配的（workflow 在 构建 之�
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'workflow', '同优先级时应取先匹配的 "workflow"');
-  assert.equal(result.skill, 'oh-my-costrict:workflow');
+  assert.equal(result.skill, 'oh-my-costrict:omg:workflow');
 });
 
 test('detectKeywords — 同优先级取先匹配的（review 在 审查 之前）', () => {
@@ -167,7 +167,7 @@ test('detectKeywords — 同优先级取先匹配的（review 在 审查 之前�
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'review', '同优先级时应取先匹配的 "review"');
-  assert.equal(result.skill, 'oh-my-costrict:review');
+  assert.equal(result.skill, 'oh-my-costrict:omg:review');
 });
 
 test('detectKeywords — grill 匹配优先于同优先级规则', () => {
@@ -176,7 +176,7 @@ test('detectKeywords — grill 匹配优先于同优先级规则', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'grill', '"grill" 应优先于 "review"');
-  assert.equal(result.skill, 'oh-my-costrict:grill-with-docs');
+  assert.equal(result.skill, 'oh-my-costrict:omg:grill-with-docs');
 });
 
 // ============ 无匹配测试 ============
@@ -247,7 +247,7 @@ test('detectKeywords — 中文语境下的关键词检测', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, 'workflow');
-  assert.equal(result.skill, 'oh-my-costrict:workflow');
+  assert.equal(result.skill, 'oh-my-costrict:omg:workflow');
 });
 
 test('detectKeywords — 中文关键词"审查"在复杂句子中', () => {
@@ -256,7 +256,7 @@ test('detectKeywords — 中文关键词"审查"在复杂句子中', () => {
 
   assert.ok(result !== null, '应返回匹配结果');
   assert.equal(result.keyword, '审查');
-  assert.equal(result.skill, 'oh-my-costrict:review');
+  assert.equal(result.skill, 'oh-my-costrict:omg:review');
 });
 
 test('detectKeywords — "auto" 不再匹配任何规则', () => {

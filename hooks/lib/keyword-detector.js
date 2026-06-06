@@ -27,14 +27,14 @@
 // 关键词规则配置表
 // 每个规则包含：keyword（检测词）、skill（路由目标技能）、priority（优先级，数字越大越优先）、exact（是否精确词边界匹配）
 const KEYWORD_RULES = [
-  { keyword: 'workflow', skill: 'oh-my-costrict:workflow', priority: 10, exact: true },
-  { keyword: '构建', skill: 'oh-my-costrict:workflow', priority: 10, exact: true },
-  { keyword: 'grill', skill: 'oh-my-costrict:grill-with-docs', priority: 10, exact: false },
-  { keyword: 'tdd', skill: 'oh-my-costrict:tdd', priority: 10, exact: true },
-  { keyword: 'review', skill: 'oh-my-costrict:review', priority: 10, exact: true },
-  { keyword: '审查', skill: 'oh-my-costrict:review', priority: 10, exact: true },
-  { keyword: 'verify', skill: 'oh-my-costrict:verify', priority: 10, exact: true },
-  { keyword: '验证', skill: 'oh-my-costrict:verify', priority: 10, exact: true },
+  { keyword: 'workflow', skill: 'oh-my-costrict:omg:workflow', priority: 10, exact: true },
+  { keyword: '构建', skill: 'oh-my-costrict:omg:workflow', priority: 10, exact: true },
+  { keyword: 'grill', skill: 'oh-my-costrict:omg:grill-with-docs', priority: 10, exact: false },
+  { keyword: 'tdd', skill: 'oh-my-costrict:omg:tdd', priority: 10, exact: true },
+  { keyword: 'review', skill: 'oh-my-costrict:omg:review', priority: 10, exact: true },
+  { keyword: '审查', skill: 'oh-my-costrict:omg:review', priority: 10, exact: true },
+  { keyword: 'verify', skill: 'oh-my-costrict:omg:verify', priority: 10, exact: true },
+  { keyword: '验证', skill: 'oh-my-costrict:omg:verify', priority: 10, exact: true },
 ];
 
 /**

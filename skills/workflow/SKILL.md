@@ -1,5 +1,5 @@
 ---
-name: workflow
+name: omg:workflow
 description: 完整开发流水线 — idea → PRD → UI设计 → 架构设计 → 拆解子任务 → TDD编码 → 代码审查+DX审查 → 修复循环 → 验证+汇总报告 → 完成
 argument-hint: "<任务描述>"
 ---

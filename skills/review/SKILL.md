@@ -1,5 +1,5 @@
 ---
-name: review
+name: omg:review
 description: 代码审查+DX审查 — 审查代码质量、命名规范、错误处理、性能、安全，外加开发者体验维度
 argument-hint: "<代码路径或 PR 描述>"
 ---

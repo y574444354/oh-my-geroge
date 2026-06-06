@@ -1,5 +1,5 @@
 ---
-name: verify
+name: omg:verify
 description: 验证+汇总报告 — 运行测试和覆盖率检查，失败则自动修复并重跑，通过后汇总全流程报告
 argument-hint: "<代码路径>"
 ---

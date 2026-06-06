@@ -43,26 +43,26 @@
 
 | 技能 | 用途 | 触发方式 |
 |------|------|----------|
-| **/oh-my-costrict:workflow** | 完整开发流水线（8 Phase：idea → PRD → UI设计 → 架构设计 → 拆解子任务 → TDD编码 → 代码审查+DX审查 → 修复循环 → 验证+汇总） | `/oh-my-costrict:workflow <任务描述>` 或说 "workflow"/"构建" |
+| **/oh-my-costrict:omg:workflow** | 完整开发流水线（8 Phase：idea → PRD → UI设计 → 架构设计 → 拆解子任务 → TDD编码 → 代码审查+DX审查 → 修复循环 → 验证+汇总） | `/oh-my-costrict:omg:workflow <任务描述>` 或说 "workflow"/"构建" |
 
 ### 阶段独立命令（对应流水线各 Phase）
 
 | 技能 | 对应 Phase | 用途 | 触发方式 |
 |------|-----------|------|----------|
-| **/oh-my-costrict:prd** | Phase 1 | 需求探索 + PRD 生成，内置 grill-with-docs 术语挑战，含 Gate 确认 | `/oh-my-costrict:prd <任务描述>` |
-| **/oh-my-costrict:design** | Phase 3 | 架构设计 + 审查，内置 grill-with-docs 领域验证，含 Gate 确认 | `/oh-my-costrict:design <PRD 或需求>` |
-| **/oh-my-costrict:plan** | Phase 4 | 拆解编码子任务，按垂直切片拆分，标注依赖关系 | `/oh-my-costrict:plan <PRD/设计文档>` |
-| **/oh-my-costrict:tdd** | Phase 5 | TDD 并行编码，executor x N + tdd-guide 引导，目标 80%+ 覆盖率 | `/oh-my-costrict:tdd <功能描述>` 或说 "tdd" |
-| **/oh-my-costrict:review** | Phase 6 | 代码审查 + DX 审查（代码质量 + 设计 + 安全 + 开发者体验） | `/oh-my-costrict:review <代码路径>` 或说 "review"/"审查" |
-| **/oh-my-costrict:verify** | Phase 8 | 验证 + 汇总报告（测试 + 覆盖率 + lint + typecheck + 质量评分 A/B/C/D/F） | `/oh-my-costrict:verify <代码路径>` 或说 "verify"/"验证" |
+| **/oh-my-costrict:omg:prd** | Phase 1 | 需求探索 + PRD 生成，内置 grill-with-docs 术语挑战，含 Gate 确认 | `/oh-my-costrict:omg:prd <任务描述>` |
+| **/oh-my-costrict:omg:design** | Phase 3 | 架构设计 + 审查，内置 grill-with-docs 领域验证，含 Gate 确认 | `/oh-my-costrict:omg:design <PRD 或需求>` |
+| **/oh-my-costrict:omg:plan** | Phase 4 | 拆解编码子任务，按垂直切片拆分，标注依赖关系 | `/oh-my-costrict:omg:plan <PRD/设计文档>` |
+| **/oh-my-costrict:omg:tdd** | Phase 5 | TDD 并行编码，executor x N + tdd-guide 引导，目标 80%+ 覆盖率 | `/oh-my-costrict:omg:tdd <功能描述>` 或说 "tdd" |
+| **/oh-my-costrict:omg:review** | Phase 6 | 代码审查 + DX 审查（代码质量 + 设计 + 安全 + 开发者体验） | `/oh-my-costrict:omg:review <代码路径>` 或说 "review"/"审查" |
+| **/oh-my-costrict:omg:verify** | Phase 8 | 验证 + 汇总报告（测试 + 覆盖率 + lint + typecheck + 质量评分 A/B/C/D/F） | `/oh-my-costrict:omg:verify <代码路径>` 或说 "verify"/"验证" |
 
 ### 独立工具命令
 
 | 技能 | 用途 | 触发方式 |
 |------|------|----------|
-| **/oh-my-costrict:grill-me** | 质询式设计审查 — 对计划/设计进行无情面试，每次一问，附带推荐答案 | `/oh-my-costrict:grill-me` |
-| **/oh-my-costrict:grill-with-docs** | 领域模型驱动的设计审查 — 用 spec 和 CONTEXT.md 挑战方案 | `/oh-my-costrict:grill-with-docs <文档路径>` 或说 "grill" |
-| **/oh-my-costrict:ui-ux-pro-max** | UI/UX 设计智能 — 50+ 风格、161 调色板、57 字体配对、99 UX 准则 | `/oh-my-costrict:ui-ux-pro-max <设计需求>` |
+| **/oh-my-costrict:omg:grill-me** | 质询式设计审查 — 对计划/设计进行无情面试，每次一问，附带推荐答案 | `/oh-my-costrict:omg:grill-me` |
+| **/oh-my-costrict:omg:grill-with-docs** | 领域模型驱动的设计审查 — 用 spec 和 CONTEXT.md 挑战方案 | `/oh-my-costrict:omg:grill-with-docs <文档路径>` 或说 "grill" |
+| **/oh-my-costrict:omg:ui-ux-pro-max** | UI/UX 设计智能 — 50+ 风格、161 调色板、57 字体配对、99 UX 准则 | `/oh-my-costrict:omg:ui-ux-pro-max <设计需求>` |
 
 ## 关键词自动检测
 
@@ -70,11 +70,11 @@
 
 | 关键词 | 自动路由 |
 |--------|----------|
-| "workflow" / "构建" | `/oh-my-costrict:workflow` |
-| "grill"（含 grilling 等变体） | `/oh-my-costrict:grill-with-docs` |
-| "tdd" | `/oh-my-costrict:tdd` |
-| "review" / "审查" | `/oh-my-costrict:review` |
-| "verify" / "验证" | `/oh-my-costrict:verify` |
+| "workflow" / "构建" | `/oh-my-costrict:omg:workflow` |
+| "grill"（含 grilling 等变体） | `/oh-my-costrict:omg:grill-with-docs` |
+| "tdd" | `/oh-my-costrict:omg:tdd` |
+| "review" / "审查" | `/oh-my-costrict:omg:review` |
+| "verify" / "验证" | `/oh-my-costrict:omg:verify` |
 
 ## 并行执行
 

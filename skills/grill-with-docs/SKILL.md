@@ -1,5 +1,5 @@
 ---
-name: grill-with-docs
+name: omg:grill-with-docs
 description: 领域模型挑战 — 用项目 spec 和 CONTEXT.md 挑战设计方案、精确化术语、内联更新文档和 ADR
 argument-hint: "<PRD 或设计文档路径>"
 ---

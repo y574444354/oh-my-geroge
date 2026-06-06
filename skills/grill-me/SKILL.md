@@ -1,5 +1,5 @@
 ---
-name: grill-me
+name: omg:grill-me
 description: 质询式设计审查 — 对计划/设计进行无情面试，每次一问，附带推荐答案
 ---
 

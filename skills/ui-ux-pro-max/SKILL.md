@@ -1,5 +1,5 @@
 ---
-name: ui-ux-pro-max
+name: omg:ui-ux-pro-max
 description: UI/UX 设计智能 — 50+ 风格、161 调色板、57 字体配对、99 UX 准则，自动生成设计系统
 argument-hint: "<设计需求描述>"
 ---

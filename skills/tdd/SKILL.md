@@ -1,5 +1,5 @@
 ---
-name: tdd
+name: omg:tdd
 description: TDD 开发 — 红-绿-重构循环，先写测试再写实现，目标 80%+ 覆盖率
 argument-hint: "<功能描述>"
 ---
